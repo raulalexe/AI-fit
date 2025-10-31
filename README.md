@@ -82,6 +82,23 @@ npm run ios
 npm run web
 ```
 
+### 5. Run the Backend API Server
+
+```bash
+# Copy backend environment template
+cp server/.env.example server/.env
+
+# Update the values with your Supabase and JWT credentials
+$EDITOR server/.env
+
+# Start the Express server with automatic reload
+npm run server:dev
+
+# Build and run the compiled server (optional)
+npm run server:build
+npm run server:start
+```
+
 ## 🗄 Database Setup
 
 ### Supabase Project Setup
@@ -246,6 +263,23 @@ EXPO_PUBLIC_API_URL=http://localhost:3000
 
 # Development
 EXPO_PUBLIC_DEBUG=true
+```
+
+Create a separate `.env` file for the backend server using `server/.env.example` as a template:
+
+```bash
+cp server/.env.example server/.env
+```
+
+That file requires the Supabase keys (including the service role key) and JWT settings listed below:
+
+```env
+# Backend API Configuration
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+JWT_SECRET=your_secure_random_string_with_32_chars_minimum
+JWT_EXPIRES_IN_SECONDS=3600
 ```
 
 ## 🚀 Deployment
